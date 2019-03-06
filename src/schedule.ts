@@ -161,6 +161,7 @@ export = function Schedule(gossip: any, config: any, server: any) {
 
   var connecting = false;
   function connections() {
+
     if (connecting || closed) return;
     connecting = true;
     var timer = setTimeout(function() {
@@ -171,6 +172,8 @@ export = function Schedule(gossip: any, config: any, server: any) {
 
       const ts = Date.now();
       const peers: Array<Peer> = gossip.peers();
+
+      console.log(peers);
 
       const connected = peers.filter(
         and(isConnect, not(isLocal), not(isFriend)),
