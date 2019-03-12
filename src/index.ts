@@ -543,7 +543,10 @@ module.exports = {
       for (let [address, data] of connDB.entries()) {
         if (data.source === 'dht') {
           gossip.add(address, 'dht');
-        } else if (data.source !== 'local' && data.source !== 'bt') {
+        }
+        else if(data.source === 'bt') {
+          gossip.add(address, 'bt');
+        } else if (data.source !== 'local') {
           gossip.add(address, 'stored');
         }
       }
